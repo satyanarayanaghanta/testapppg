@@ -1,0 +1,14 @@
+version: '2'
+services:
+    testapppg-app:
+        image: testapppg
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://testapppg-postgresql:5432/testapppg
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    testapppg-postgresql:
+        extends:
+            file: postgresql.yml
+            service: testapppg-postgresql
